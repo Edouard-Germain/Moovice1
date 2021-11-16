@@ -17,14 +17,20 @@ class Weeklybattle extends Component{
             this.setState({movies : result.results})
         })
     }
+    handleClick =() => {
+        
+      this.setState({currentbattle: this.state.currentbattle +2})      // Find qui va retrouver l'index des deux prochaines cards à afficher : ( index movie + 2)
+        
+    }
     render(){
         console.log(this.state.movies)
+        console.log(this.state.currentbattle)
         return(
         <>
             <Nav></Nav>
             <h1>Weekly-Battle</h1>
-            {this.state.movies.slice(0,2).map((movie)=>(
-            <Card movie = {movie}></Card>
+            {this.state.movies.slice(this.state.currentbattle,2).map((movie)=>(
+            <Card onClick = {this.handleClick} movie = {movie}></Card>
             ))}
 
         </>
