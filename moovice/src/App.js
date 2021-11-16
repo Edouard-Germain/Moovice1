@@ -1,25 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
+import React, {Component} from 'react'
+import { BrowserRouter, Switch, Route } from "react-router-dom"
+import Home from './Pages/Home'
+import Favorites from './Pages/Favorites'
+import Popular from './Pages/Popular'
+import Weeklybattle from './Pages/Weekly-battle'
+import Weekly from './Pages/Weekly'
+import Notfound from './Pages/Error404'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component  {
+  render (){
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path ='/' component ={Home}></Route>
+          <Route path ='/Favorites' component ={Favorites}></Route>
+          <Route path ='/Popular' component ={Popular}></Route>
+          <Route path='/Weeklybattle' component={Weeklybattle}></Route>
+          <Route path='/Weekly' component ={Weekly}></Route>
+          <Route path='*' component={Notfound}></Route>
+        </Switch>
+      </BrowserRouter>
+    )
+  }
 }
-
-export default App;
+export default App
